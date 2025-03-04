@@ -1,0 +1,1233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-light: linear-gradient(135deg, #6366f1, #a855f7);
+    --primary-dark: linear-gradient(135deg, #3730a3, #7e22ce);
+    --bg-light: #0f172a;
+    --bg-dark: #000;
+    --box-bg-light: rgba(255, 255, 255, 0.15);
+    --box-bg-dark: rgba(23, 23, 37, 0.75);
+    --text-light: rgba(255, 255, 255, 0.9);
+    --text-dark: rgba(255, 255, 255, 0.95);
+}
+
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+html {
+    background: #0f172a;
+}
+
+body {
+    opacity: 0;
+    transition: opacity 0.15s ease-out; /* Faster transition */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.05) 50%, transparent 40%);
+    min-height: 96vh;
+    overflow-x: hidden; /* Prevent horizontal scroll during transition */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: opacity 0.1s ease-out;
+    will-change: opacity;
+    transition: opacity 0.08s linear;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('background.webp'); /* Replace with your new background file */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*filter: blur(3px); /* Add blur effect */
+    z-index: -1;
+}
+
+.content-wrapper {
+    position: relative;
+    height: calc(100vh - 100px); /* Account for navbar and margins */
+    width: 100vw;
+    overflow: hidden; /* Prevent content scroll */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Enhanced Navbar Styles */
+.navbar {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(240, 248, 255, 0.9));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 50px;
+    box-shadow: 0 10px 40px rgba(31, 38, 135, 0.12);
+    padding: 0.6rem 1.5rem;
+    max-width: 1200px;
+    margin: 60px auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translateY(-30px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 10;
+}
+
+.navbar.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Navbar Brand Styles */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: #222;
+    position: relative;
+    padding: 0.5rem 0;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    z-index: 2; /* Ensure text is above all layers */
+    font-family: 'Arial Black', sans-serif; /* Stylish font */
+}
+
+.navbar-brand::before,
+.navbar-brand::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -3px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    transition: width 0.4s ease-in-out;
+    z-index: -1; /* Place gradient behind the text */
+}
+
+.navbar-brand::before {
+    left: 0;
+}
+
+.navbar-brand::after {
+    right: 0;
+}
+
+.navbar-brand:hover::before,
+.navbar-brand:hover::after {
+    width: 50%;
+}
+
+.nav-link {
+    position: relative;
+    padding: 0.7rem 1.2rem;
+    margin: 0 0.5rem;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 1; /* Ensure text is above the gradient */
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: -1; /* Place gradient behind the text */
+}
+
+.nav-link:hover {
+    color: #667eea;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+.nav-link:hover::before {
+    opacity: 1;
+}
+
+.dropdown-menu {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.5rem;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-left: 0.3em solid transparent;
+    transition: transform 0.3s ease-in-out;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu a {
+    transition: transform 0.2s ease-in-out;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+    transform: translateX(5px);
+}
+
+.report-button {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.report-button:hover {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 25px rgba(99, 102, 241, 0.4);
+}
+
+.report-button:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* Modify side-nav styles */
+.side-nav {
+    position: fixed;
+    left: calc(50%); /* Center position */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 20px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.side-nav:hover {
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Add new info-box styles */
+.info-box {
+    position: fixed;
+    left: calc(50% + 320px); /* 320px spacing from center */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 20px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); /* Faster transition */
+    will-change: transform, opacity;
+    transition: all 0.08s linear;
+}
+
+.info-box-content {
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.info-box-content i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.info-box-content h3 {
+    margin: 15px 0;
+    font-size: 1.5rem;
+}
+
+.info-box-content p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.info-box:hover, .side-nav:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Faster hover effect */
+}
+
+.info-box.active {
+    transform: translate(-50%, -50%) scale(1.05);
+    left: 50%;
+}
+
+.info-box.active ~ .map-tooltip {
+    transform: translate(-50%, -50%) translateX(100px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Adjust map-tooltip position */
+.map-tooltip {
+    left: calc(50% + 780px); /*This controls horizontal position from center*/
+    top: 50%; /* This controls vertical position */
+    transform: translate(100%, -20%);
+    width: 350px;
+    min-height: 300px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center; /* Add text alignment */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5; /* Above overlay but below navbar */
+}
+
+/* Add new styles for tooltip positioning during hover */
+.side-nav:hover ~ .map-tooltip.show {
+    left: calc(50% + 480px); /* Keep consistent spacing on hover */
+}
+
+.map-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.map-tooltip.pinned {
+    left: calc(90% + 160px); /* This controls the pinned position */
+    opacity: 1;
+    visibility: visible;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.map-tooltip.show ~ .info-box {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.map-tooltip h3 {
+    font-size: 1.4rem; /* Increased from 1.2rem */
+    margin-bottom: 15px; /* Increased margin */
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.map-tooltip p {
+    font-size: 1.1rem; /* Increased from 0.9rem */
+    line-height: 1.6; /* Increased line height */
+    width: 100%;
+
+    text-align: center;
+}
+
+.disaster-circles {
+    position: fixed;
+    left: calc(50% - 600px); /* Back to original value */
+    top: 50%;
+    transform: translateY(-60%);
+    width: 900px; /* Increased from 400px to allow more spacing */
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto; /* Ensure clicks pass through the container */
+    z-index: 5; /* Above overlay but below navbar */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.disaster-circles.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.disaster-circle {
+    position: absolute;
+    width: 105px;  /* Increased from 70px (70 * 1.5) */
+    height: 105px; /* Increased from 70px (70 * 1.5) */
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 200px 150px; /* Reduced from 250px */
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto; /* Re-enable clicks for circles */
+    transform: rotate(180deg) translateX(0) rotate(-180deg); /* Initial state at center */
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy animation */
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.disaster-circle:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.disaster-link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    text-decoration: none;
+    padding: 15px;
+    text-align: center;
+}
+
+.disaster-link i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.disaster-circle:hover .disaster-link i {
+    animation: rotateIcon 1s ease-in-out;
+}
+
+.disaster-link span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.disaster-circles.show .disaster-circle:nth-child(1) {
+    transform: rotate(120deg) translateX(250px) rotate(-120deg); /* Reduced from 300px */
+    transition-delay: 0.2s;
+}
+
+.disaster-circles.show .disaster-circle:nth-child(2) {
+    transform: rotate(150deg) translateX(250px) rotate(-150deg); /* Reduced from 300px */
+    transition-delay: 0.3s;
+}
+
+.disaster-circles.show .disaster-circle:nth-child(3) {
+    transform: rotate(180deg) translateX(250px) rotate(-180deg); /* Reduced from 300px */
+    transition-delay: 0.4s;
+}
+
+.disaster-circles.show .disaster-circle:nth-child(4) {
+    transform: rotate(210deg) translateX(250px) rotate(-210deg); /* Reduced from 300px */
+    transition-delay: 0.5s;
+}
+
+.disaster-circles.show .disaster-circle:nth-child(5) {
+    transform: rotate(240deg) translateX(250px) rotate(-240deg); /* Reduced from 300px */
+    transition-delay: 0.6s;
+}
+
+.disaster-circles.show .disaster-circle {
+    opacity: 1;
+}
+
+.disaster-circle a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem; /* Slightly larger font to match new circle size */
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* Add wave animation for tsunami */
+.wave-animation {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    top: 50%;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    left: -50%;
+    animation: waveMove 2s linear infinite;
+    transform: scale(0);
+}
+
+.wave:nth-child(2) {
+    animation-delay: 1s;
+}
+
+@keyframes waveMove {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes rotateIcon {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Add overlay layer */
+.black-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.40); /* Adjust opacity as needed */
+    z-index: 1; /* Place above background but below navbar */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.side-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.side-nav-links li {
+    width: 100%;
+}
+
+.side-nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.side-nav-links li a i {
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* Add new hover effect styles */
+.side-nav:hover + .disaster-circles + .map-tooltip + .info-box,
+.side-nav:hover ~ .digital-vigilance {
+    transform: translate(-50%, -50%) translateX(100px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Add new custom icon styles */
+.map-icon-stack {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.map-icon-stack i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.map-icon-stack .back {
+    color: rgba(135, 206, 235, 0.8); /* Sky blue */
+    font-size: 4rem;
+    z-index: 1;
+}
+
+.map-icon-stack .middle {
+    color: rgba(255, 243, 224, 0.9); /* Cream color */
+    font-size: 3.5rem;
+    z-index: 2;
+}
+
+.map-icon-stack .front {
+    color: rgba(135, 206, 235, 0.8); /* Sky blue */
+    font-size: 3rem;
+    z-index: 3;
+}
+
+.map-stack {
+    position: relative;
+    width: 70px;
+    height: 45px;
+    margin-bottom: 15px;
+}
+
+.map-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: skew(-20deg);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.map-layer.back {
+    background: rgba(135, 206, 235, 0.8);
+    bottom: -8px;
+    left: -8px;
+}
+
+.map-layer.middle {
+    background: rgba(255, 243, 224, 0.9);
+    bottom: -4px;
+    left: -4px;
+    z-index: 2;
+}
+
+.map-layer.front {
+    background: rgba(135, 206, 235, 0.8);
+    z-index: 3;
+}
+
+.map-marker {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.2rem;
+    color: #444;
+    z-index: 4;
+}
+
+/* Add new digital-vigilance box styles */
+.digital-vigilance {
+    position: fixed;
+    left: calc(60.5% - 480px);  /* This controls horizontal position */
+    top: 50%;                 /* This controls vertical position */
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 20px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.digital-vigilance-content {
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.digital-vigilance-content i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.digital-vigilance-content h3 {
+    margin: 15px 0;
+    font-size: 1.5rem;
+}
+
+.digital-vigilance:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.digital-vigilance.active {
+    transform: translate(-50%, -50%) scale(1.05);
+    left: 50%;
+}
+
+/* Add active states for all boxes */
+.digital-vigilance.active,
+.side-nav.active,
+.info-box.active,
+.map-tooltip.active {
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 6;
+}
+
+/* Hide other boxes when one is active */
+.box-active .digital-vigilance:not(.active),
+.box-active .side-nav:not(.active),
+.box-active .info-box:not(.active),
+.box-active .map-tooltip:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+/* Update active states for box centering */
+.box-active .digital-vigilance.active,
+.box-active .side-nav.active,
+.box-active .info-box.active,
+.box-active .map-tooltip.active {
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 6;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide inactive boxes */
+.box-active .digital-vigilance:not(.active),
+.box-active .side-nav:not(.active),
+.box-active .info-box:not(.active),
+.box-active .map-tooltip:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add new animation for digital vigilance hide */
+.digital-vigilance {
+    /* ...existing styles... */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.digital-vigilance.hide {
+    transform: translate(-50%, -50%) translateX(100px) scale(0.8);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Add smooth hide animation for boxes */
+.digital-vigilance, .side-nav {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.box-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) translateX(100px) scale(0.8);
+}
+
+/* Add new animation for digital vigilance active state */
+.digital-vigilance.active {
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 6;
+}
+
+/* Add new styles */
+.digital-vigilance {
+    /* ...existing styles... */
+    transform: translate(-50%, -50%);
+    left: calc(60.5% - 480px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Update active state animation */
+.digital-vigilance.active {
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 6;
+}
+
+/* Update hiding animation */
+.digital-vigilance.box-hidden {
+    transform: translate(-150%, -50%) !important;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Update hover effect animations */
+.side-nav:hover ~ .digital-vigilance {
+    transform: translate(-150%, -50%) !important;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.side-nav:hover ~ .info-box {
+    transform: translate(-50%, -50%) translateX(100px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Update transition timing */
+.digital-vigilance {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+}
+
+/* Report button animation */
+.report-button {
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.report-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.report-button:hover::before {
+    left: 100%;
+}
+
+.report-button.clicked {
+    transform: scale(1.1);
+}
+
+.language-selector {
+    position: fixed;
+    bottom: 20px;  /* Changed from top to bottom */
+    right: 20px;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(99, 102, 241, 0.15));
+    padding: 8px;
+    border-radius: 25px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.language-selector:hover {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(99, 102, 241, 0.2));
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.3);
+    border-color: rgba(168, 85, 247, 0.5);
+}
+
+.lang-select {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid rgba(168, 85, 247, 0.3);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(99, 102, 241, 0.1));
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    min-width: 140px;
+    outline: none;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+    padding-right: 40px;
+    background: transparent;
+}
+
+.lang-select:hover {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(99, 102, 241, 0.2));
+    border-color: rgba(168, 85, 247, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.lang-select:focus {
+    border-color: rgba(168, 85, 247, 0.8);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+.lang-select option {
+    background: rgba(23, 23, 37, 0.95);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.lang-select option:hover {
+    background: rgba(168, 85, 247, 0.2);
+}
+
+.lang-select option:checked {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(99, 102, 241, 0.9));
+}
+
+.lang-select option:checked,
+.lang-select option:active,
+.lang-select option:hover {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(99, 102, 241, 0.9));
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Ensure selected option maintains its color */
+.lang-select:focus option:checked {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(99, 102, 241, 0.9));
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600;
+}
+
+/* Override any browser default styles */
+.lang-select, 
+.lang-select * {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Add pulsing animation for the language selector */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.language-selector:not(:hover) {
+    animation: gentlePulse 3s infinite;
+}
+
+/* Remove the theme toggle position adjustment since language selector is now at bottom */
+.theme-toggle {
+    right: 20px;
+}
+
+@keyframes gentlePulse {
+    0% { transform: scale(1); box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2); }
+    50% { transform: scale(1.02); box-shadow: 0 8px 32px rgba(168, 85, 247, 0.4); }
+    100% { transform: scale(1); box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2); }
+}
+
+/* Remove the gradient background from options */
+.lang-select option[value="en"] {
+    background: rgba(0, 0, 0, 0.95);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.lang-select option:not([value="en"]) {
+    background: rgba(23, 23, 37, 0.95);
+}
+
+/* Override browser defaults for selected option */
+.lang-select option:checked {
+    background: rgba(168, 85, 247, 0.4) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 600;
+}
+
+/* Remove any default styling that might cause the white gradient */
+.lang-select, 
+.lang-select:focus,
+.lang-select:active,
+.lang-select option:hover {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(99, 102, 241, 0.1));
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Ensure text remains visible */
+.lang-select,
+.lang-select option,
+.lang-select:focus option,
+.lang-select option:checked {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 180px;
+    z-index: 1001;
+}
+
+.theme-btn {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(99, 102, 241, 0.15));
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px) rotate(10deg);
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.3);
+}
+
+.theme-btn i {
+    transition: none;
+}
+
+.theme-btn .dark-icon {
+    display: none;
+}
+
+/* Dark Theme Styles */
+body.dark-theme {
+    background: var(--bg-dark);
+}
+
+.dark-theme .navbar {
+    background: linear-gradient(to right, rgba(23, 23, 37, 0.95), rgba(17, 17, 27, 0.95));
+}
+
+.dark-theme .side-nav,
+.dark-theme .info-box,
+.dark-theme .digital-vigilance,
+.dark-theme .map-tooltip {
+    background-color: var(--box-bg-dark);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .report-button {
+    background: var(--primary-dark);
+}
+
+.dark-theme .theme-btn .light-icon {
+    display: none;
+}
+
+.dark-theme .theme-btn .dark-icon {
+    display: block;
+}
+
+/* Remove theme transition animations */
+.theme-transition {
+    display: none;
+}
+
+.dark-theme .side-nav,
+.dark-theme .info-box,
+.dark-theme .digital-vigilance,
+.dark-theme .map-tooltip {
+    background-color: var(--box-bg-dark);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Update instant theme changes */
+.theme-btn i {
+    transition: none;
+}
+
+/* Remove animation keyframes */
+@keyframes themeChange {
+    /* Remove animation */
+}
+
+@keyframes boxTransition {
+    /* Remove animation */
+}
+
+/* Update navbar styles for dark theme */
+.dark-theme .navbar-brand {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-theme .nav-link:hover {
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .dropdown-menu {
+    background: rgba(23, 23, 37, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .dropdown-menu a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-theme .dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* Dark theme text contrast updates */
+.dark-theme .info-box-content,
+.dark-theme .digital-vigilance-content,
+.dark-theme .map-tooltip,
+.dark-theme .disaster-circle a,
+.dark-theme .side-nav-links li a {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .info-box-content h3,
+.dark-theme .digital-vigilance-content h3,
+.dark-theme .map-tooltip h3 {
+    color: #ffffff;
+}
+
+.dark-theme .info-box-content p,
+.dark-theme .digital-vigilance-content p,
+.dark-theme .map-tooltip p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-theme .disaster-link span {
+    color: #ffffff;
+}
+
+.dark-theme .report-button {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-theme .nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .dropdown-menu a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-theme .dropdown-menu a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Dark theme text contrast updates for side nav */
+.dark-theme .side-nav-links li a {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}

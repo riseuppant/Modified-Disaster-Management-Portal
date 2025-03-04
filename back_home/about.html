@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDRP - Indian Disaster Response Portal - Navbar</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+  <div class="black-overlay"></div>
+  <div class="language-selector">
+    <select class="lang-select" onchange="translatePage(this.value)">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="ta">தமிழ்</option>
+        <option value="te">తెలుగు</option>
+        <option value="bn">বাংলা</option>
+    </select>
+</div>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <span class="brand-text" data-translate="navbar-brand">Indian Disaster Response Portal</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#" data-translate="home-link">Home</a></li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="vigilanceDropdown" role="button" data-toggle="dropdown" data-translate="vigilance-link">Disaster Vigilance</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="live-map.html" id="Live-Disaster-Map" data-translate="live-map">Live Disaster Map</a>
+                <a class="dropdown-item" href="preparedness.html" data-translate="prep-link">Preparedness & Response</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-toggle="dropdown" data-translate="about-link">About Us</a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="mission.html" data-translate="mission-link">Our Mission</a>
+        <a class="dropdown-item" href="database.html" id="databaseLink" data-translate="database-link">Our Database</a>
+        <a class="dropdown-item" href="workflow.html" data-translate="workflow-link">How It Works</a>
+    </div>
+</li>
+
+    </ul>
+</div>
+
+      <div class="ml-auto d-flex align-items-center">
+    <a href="../ReportPage/report-landing.html" class="btn report-button" id="report-btn" data-translate="report-btn">Report Now</a>
+</div>
+
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <nav class="side-nav">
+      <ul class="side-nav-links">
+        <li>
+          <a href="#">
+            <i class="fas fa-map-marked-alt"></i>
+            <span data-translate="interactive-maps">Interactive Maps</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="disaster-circles">
+    <div class="disaster-circle">
+        <a href="live-map.html?type=earthquake" class="disaster-link">
+            <i class="fas fa-house-damage"></i>
+            <span data-translate="disaster-earthquake">Earthquake</span>
+        </a>
+    </div>
+    <div class="disaster-circle">
+        <a href="live-map.html?type=flood" class="disaster-link">
+            <i class="fas fa-water"></i>
+            <span data-translate="disaster-flood">Floods</span>
+        </a>
+    </div>
+    <div class="disaster-circle">
+        <a href="live-map.html?type=tsunami" class="disaster-link">
+            <i class="fas fa-water"></i>
+            <div class="wave-animation">
+                <span class="wave"></span>
+                <span class="wave"></span>
+            </div>
+            <span data-translate="disaster-tsunami">Tsunami</span>
+        </a>
+    </div>
+    <div class="disaster-circle">
+        <a href="live-map.html?type=cyclone" class="disaster-link">
+            <i class="fas fa-wind"></i>
+            <span data-translate="disaster-cyclone">Cyclones</span>
+        </a>
+    </div>
+    <div class="disaster-circle">
+        <a href="live-map.html?type=landslide" class="disaster-link">
+            <i class="fas fa-mountain"></i>
+            <span data-translate="disaster-landslide">Landslides</span>
+        </a>
+    </div>
+</div>
+
+    <div class="map-tooltip">
+      <h3 data-translate="map-tooltip-title">Interactive Disaster Map</h3>
+      <p data-translate-html="map-tooltip-desc">Click on the Interactive Maps button to explore disaster-specific information. Access detailed heat maps and data visualizations for various natural disasters affecting different regions of India.</p>
+      <p data-translate="map-tooltip-hint" style="margin-top: 15px; font-style: italic; font-size: 0.9em;">Click to toggle the disaster options</p>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-content" data-link="preparedness.html">
+        <i class="fas fa-info-circle"></i>
+        <h3 data-translate="info-center-title">Information Center</h3>
+        <p data-translate="info-center-desc">Access vital information about disaster preparedness, emergency contacts, and safety guidelines.</p>
+      </div>
+    </div>
+
+    <div class="digital-vigilance">
+      <div class="digital-vigilance-content">
+        <i class="fas fa-shield-alt"></i>
+        <h3 data-translate="digital-vigilance-title">Digital Vigilance</h3>
+        <p data-translate="digital-vigilance-desc">Monitor and analyze disaster data through advanced digital surveillance.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="about .js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Add click tracking for disaster links
+    document.querySelectorAll('.disaster-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Get the disaster type from URL
+            const type = this.href.split('type=')[1];
+            console.log('Navigating to:', type, 'disaster map');
+            
+            // Add transition effect
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 300);
+            
+            e.preventDefault();
+        });
+    });
+</script>
+</body>
+</html>

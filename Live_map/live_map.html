@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Disaster Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="live_map.css">
+</head>
+<body>
+    <div id="map-container">
+        <!-- Disaster Menu -->
+        <div id="disaster-menu">
+            <div class="menu-header">
+                <h2>Live Disaster Map</h2>
+            </div>
+            
+            <!-- Home Button -->
+            <div class="home-button">
+                <a href="../Home/about.html" id="home-link">
+                    <i class="fas fa-home"></i>
+                    <span class="animated-text">Back to Home</span>
+                </a>
+            </div>
+            
+            <!-- Search Box -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search disasters...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="category-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                </div>
+            </div>
+            
+            <ul class="disaster-list">
+                <li class="disaster-item" data-map="earthquake.html" data-category="severe" id="earthquake-item">
+                    <div class="disaster-icon"><i class="fas fa-house-crack"></i></div>
+                    <div class="disaster-name">Earthquakes</div>
+                </li>
+                <li class="disaster-item" data-map="floods.html" data-category="recent" id="floods-item">
+                    <div class="disaster-icon"><i class="fas fa-water"></i></div>
+                    <div class="disaster-name">Floods</div>
+                </li>
+                <li class="disaster-item" data-map="hurricanes.html" data-category="recent" id="hurricanes-item">
+                    <div class="hurricane-icon"></div>
+                    <div class="disaster-name">Hurricanes</div>
+                </li>
+                <li class="disaster-item" data-map="tsunamis.html" data-category="severe" id="tsunamis-item">
+                    <div class="tsunami-icon"></div>
+                    <div class="disaster-name">Tsunamis</div>
+                </li>
+                <li class="disaster-item" data-map="landslides.html" data-category="recent" id="landslides-item">
+                    <div class="disaster-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="disaster-name">Landslides</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Toggle Button -->
+        <button class="toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Loading Indicator -->
+        <div class="loading hidden">
+            <i class="fas fa-spinner"></i>
+            <p>Loading map data...</p>
+        </div>
+
+        <!-- Map Controls (Zoom) -->
+        <div class="map-controls">
+            <button class="map-control-btn" id="zoom-in">
+                <i class="fas fa-plus"></i>
+            </button>
+            <div class="tooltip">Zoom In</div>
+            
+            <button class="map-control-btn" id="zoom-out">
+                <i class="fas fa-minus"></i>
+            </button>
+            <div class="tooltip">Zoom Out</div>
+            
+            <button class="map-control-btn" id="locate-me">
+                <i class="fas fa-location-crosshairs"></i>
+            </button>
+            <div class="tooltip">My Location</div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Live data</span>
+            </div>
+            <div class="update-time">Last update: <span id="update-time" class="animated-text">Just now</span></div>
+        </div>
+
+        <!-- Map iframes will be loaded here -->
+        <div class="iframe-container">
+            <iframe id="map-frame" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // This script handles URL parameters for direct disaster selection
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check URL parameters to see if a specific disaster should be opened
+            const urlParams = new URLSearchParams(window.location.search);
+            const disasterParam = urlParams.get('disaster');
+            
+            // If a specific disaster was requested in the URL
+            if (disasterParam) {
+                // Try to find the disaster item by ID first
+                let targetDisaster = document.getElementById(disasterParam + '-item');
+                
+                // If not found by ID, try other methods
+                if (!targetDisaster) {
+                    targetDisaster = Array.from(document.querySelectorAll('.disaster-item')).find(item => {
+                        const mapUrl = item.getAttribute('data-map');
+                        const disasterName = item.querySelector('.disaster-name').textContent.toLowerCase();
+                        
+                        return mapUrl.includes(disasterParam.toLowerCase()) || 
+                               disasterName.includes(disasterParam.toLowerCase());
+                    });
+                }
+                
+                // If found, simulate a click on it
+                if (targetDisaster) {
+                    console.log('Auto-selecting disaster:', disasterParam);
+                    setTimeout(() => {
+                        targetDisaster.click();
+                    }, 500); // Small delay to ensure everything is loaded
+                }
+            }
+        });
+    </script>
+    <script src="live_map.js"></script>
+</body>
+</html>
