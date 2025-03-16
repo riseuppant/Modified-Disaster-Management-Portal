@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission | IDRP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+       /* Update these styles in your existing CSS */
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://source.unsplash.com/1600x900/?natural-disaster');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+    padding: 150px 20px;
+    position: relative;
+    overflow: hidden;
+    text-align: center; /* Center align all text in hero section */
+    height: auto; /* Adjust height to content */
+    min-height: 60vh; /* Minimum height */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px; /* Reduced height of gradient */
+    background: linear-gradient(to top, #f8f9fa, transparent);
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease-out;
+    text-align: center; /* Ensure title is centered */
+    max-width: 1000px; /* Limit width for better readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.3s backwards;
+    text-align: center; /* Ensure subtitle is centered */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center; /* Center align container content */
+}
+
+/* Add this new style for the hero container specifically */
+.hero-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #1a237e;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #1a237e, transparent);
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .goal-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .goal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #1a237e, #283593);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-15px);
+        }
+
+        .goal-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .goal-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #1a237e, #283593);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .primary-btn {
+            background: white;
+            color: #1a237e;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            transform: translateX(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container" data-aos="fade-up">
+            <h1 class="hero-title">Building a Safer Future, One Report at a Time</h1>
+            <p class="hero-subtitle">Our mission is to provide real-time, reliable disaster data, helping communities prepare, respond, and rebuild.</p>
+        </div>
+    </section>
+
+    <!-- Problem Statement Section -->
+    <section class="container" data-aos="fade-up">
+        <h2 class="section-title">Why This Portal Matters</h2>
+        <p>In today's world, disaster data is scattered across multiple sources, making it difficult for communities to access reliable information quickly. Verification issues and the lack of a centralized platform create barriers to effective disaster response.</p>
+        <p>Our solution brings all critical data together in one place, implements robust verification systems, and provides comprehensive preparedness guidelines to help save lives.</p>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="container">
+        <h2 class="section-title" data-aos="fade-up">Our Key Goals</h2>
+        <div class="goals-grid">
+            <div class="goal-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="goal-icon">🔄</div>
+                <h3>Data Centralization</h3>
+                <p>Bringing all disaster reports under one unified platform for easy access</p>
+            </div>
+            <div class="goal-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="goal-icon">⚡</div>
+                <h3>Real-Time Tracking</h3>
+                <p>Leveraging APIs to ensure live updates on disaster situations</p>
+            </div>
+            <div class="goal-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="goal-icon">👥</div>
+                <h3>Community Reporting</h3>
+                <p>Enabling users to report disasters with verified information</p>
+            </div>
+            <div class="goal-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="goal-icon">🛡️</div>
+                <h3>Preparedness & Awareness</h3>
+                <p>Providing essential resources for disaster safety and preparation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="container">
+        <h2 class="section-title" data-aos="fade-up">How It Works</h2>
+        <div class="workflow-steps">
+            <div class="step-card" data-aos="fade-right">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Users Report Disasters</h3>
+                    <p>Community members submit detailed reports about local disasters</p>
+                </div>
+            </div>
+            <div class="step-card" data-aos="fade-left">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>API Verification</h3>
+                    <p>Our system automatically verifies reports using trusted APIs</p>
+                </div>
+            </div>
+            <div class="step-card" data-aos="fade-right">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Live Tracking & Alerts</h3>
+                    <p>Verified information is displayed on live maps with real-time alerts</p>
+                </div>
+            </div>
+            <div class="step-card" data-aos="fade-left">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Safety Guidelines</h3>
+                    <p>Users receive immediate safety tips and preparedness information</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container" data-aos="fade-up">
+            <h2>Join Us in Creating a Resilient Future</h2>
+            <p>Be part of the solution. Help us build a safer tomorrow.</p>
+            
+        </div>
+    </section>
+
+    <!-- Additional styles for new elements -->
+    <style>
+        .workflow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step-card {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .step-content h3 {
+            color: #1a237e;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-section');
+            heroSection.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+    </script>
+</body>
+
+
+<body>
+    <!-- Rest of your HTML structure remains the same, just update the classes -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-section');
+            heroSection.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+    </script>
+</body>
+</html>

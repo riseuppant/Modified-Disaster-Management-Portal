@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Disaster | IDRP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="finalreport.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="../Home/about.html" class="nav-logo">IDRP</a>
+        <div class="nav-buttons">
+            <a href="../Home/about.html" class="nav-btn home">Home</a>
+            <a href="../ReportPage/auth.html" class="nav-btn login">Login</a>
+        </div>
+    </nav>
+
+    <!-- Loading Indicator -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- ... (rest of your existing HTML) ... -->
+</body>
+<body>
+    <!-- Fluid Background -->
+    <div class="fluid-bg"></div>
+
+    <!-- Loading Indicator -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container">
+        <header class="page-header">
+            <h1 class="page-title" id="page-title">Report a Disaster</h1>
+            <p class="page-subtitle" id="page-subtitle">Help communities prepare and respond by providing accurate information about disasters in your area.</p>
+        </header>
+
+        <!-- Success Message -->
+        <div class="success-message" id="success-message">
+            <h3>Your report has been successfully submitted!</h3>
+            <p>Thank you for contributing to our disaster response efforts. Your report will help communities stay informed and safe.</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="error-message">
+            <h3>There was an error submitting your report</h3>
+            <p id="error-details">Please check your information and try again.</p>
+        </div>
+
+        <form class="report-form" id="disaster-report-form">
+            <!-- 1. User Authentication Check (handled by JS) -->
+            <div class="form-section" id="auth-section">
+                <h2 class="form-section-title"><span class="number">1</span> Authentication</h2>
+                <div class="form-group" id="auth-status">
+                    <p>Checking authentication status...</p>
+                </div>
+            </div>
+            <input type="hidden" id="report-date" name="report-date">
+            <input type="hidden" id="report-time" name="report-time">
+            
+            <!-- 2. Disaster Selection -->
+            <div class="form-section">
+                <h2 class="form-section-title"><span class="number">2</span> Disaster Type</h2>
+                <div class="form-group">
+                    <label for="disaster-type">Select Disaster Type *</label>
+                    <select id="disaster-type" name="disaster-type" required>
+                        <option value="" disabled selected>Select a disaster type</option>
+                        <option value="earthquake">Earthquake</option>
+                        <option value="flood">Flood</option>
+                        <option value="cyclone">Cyclone</option>
+                        <option value="wildfire">Wildfire</option>
+                        <option value="tsunami">Tsunami</option>
+                        <option value="landslide">Landslide</option>
+                        <option value="drought">Drought</option>
+                        <option value="volcanic-eruption">Volcanic Eruption</option>
+                        <option value="extreme-weather">Extreme Weather</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 3. Location Selection -->
+            <div class="form-section">
+                <h2 class="form-section-title"><span class="number">3</span> Location</h2>
+                <div class="form-group location-search">
+                    <label for="location-search">Search Location</label>
+                    <input type="text" id="location-search" name="location-search" placeholder="Search for a location...">
+                </div>
+                <div id="map-container">
+                    <div id="map"></div>
+                </div>
+                <div class="location-details">
+                    <div class="form-group">
+                        <label for="latitude">Latitude *</label>
+                        <input type="text" id="latitude" name="latitude" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude *</label>
+                        <input type="text" id="longitude" name="longitude" readonly required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="get-location" class="btn btn-secondary">Use My Current Location</button>
+                </div>
+            </div>
+
+            <!-- 4. Additional Details -->
+            <div class="form-section">
+                <h2 class="form-section-title"><span class="number">4</span> Additional Details</h2>
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" name="description" rows="5" placeholder="Please provide details about the disaster (damage, affected areas, etc.)" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Images (Optional)</label>
+                    <div class="file-upload">
+                        <label for="image-upload" class="file-upload-label">
+                            <span class="upload-icon">📷</span>
+                            <span>Drag & drop images or click to browse</span>
+                        </label>
+                        <input type="file" id="image-upload" name="image-upload" accept="image/*" multiple>
+                    </div>
+                    <div class="preview-container" id="image-preview-container"></div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="submit-report">Submit Report</button>
+                <button type="reset" class="btn btn-secondary">Clear Form</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="finalreport.js"></script>
+</body>
+</html>

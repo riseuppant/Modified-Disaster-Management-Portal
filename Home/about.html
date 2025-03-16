@@ -35,16 +35,16 @@
                 <a class="nav-link dropdown-toggle" href="#" id="vigilanceDropdown" role="button" data-toggle="dropdown" data-translate="vigilance-link">Disaster Vigilance</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="../Live_map/live_map.html" id="Live-Disaster-Map" data-translate="live-map">Live Disaster Map</a>
-                    <a class="dropdown-item" href="preparedness.html" data-translate="prep-link">Preparedness & Response</a>
+                    <a class="dropdown-item" href="../preparedness/preparedness.html" data-translate="prep-link">Preparedness & Response</a>
                 </div>
             </li>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-toggle="dropdown" data-translate="about-link">About Us</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="mission.html" data-translate="mission-link">Our Mission</a>
+                    <a class="dropdown-item" href="../mission/mission.html" data-translate="mission-link">Our Mission</a>
                     <a class="dropdown-item" href="database.html" id="databaseLink" data-translate="database-link">Our Database</a>
-                    <a class="dropdown-item" href="workflow.html" data-translate="workflow-link">How It Works</a>
+                    <a class="dropdown-item" href="../workflow/workflow.html" data-translate="workflow-link">How It Works</a>
                 </div>
             </li>
         </ul>
@@ -70,19 +70,19 @@
 
     <div class="disaster-circles">
       <div class="disaster-circle earthquake-disaster" data-type="earthquake">
-          <a href="../Live_map/live-map.html?type=eart  hquake" class="disaster-link">
+          <a href="../Live_map/live_map.html?disaster=earthquake" class="disaster-link">
               <i class="fas fa-house-damage"></i>
               <span data-translate="disaster-earthquake">Earthquake</span>
           </a>
       </div>
       <div class="disaster-circle" data-type="flood">
-          <a href="../Live_map/live_map?disaster=floods" class="disaster-link">
+          <a href="../Live_map/live_map.html?disaster=flood" class="disaster-link">
               <i class="fas fa-water"></i>
               <span data-translate="disaster-flood">Floods</span>
           </a>
       </div>
       <div class="disaster-circle" data-type="tsunami">
-          <a href="../Live_map/live_map?disaster=tsunamis" class="disaster-link">
+          <a href="../Live_map/live_map.html?disaster=tsunami" class="disaster-link">
               <i class="fas fa-water"></i>
               <div class="wave-animation">
                   <span class="wave"></span>
@@ -92,18 +92,19 @@
           </a>
       </div>
       <div class="disaster-circle" data-type="cyclone">
-          <a href="../Live_map/live_map?disaster=hurricanes" class="disaster-link">
+          <a href="../Live_map/live_map.html?disaster=cyclone" class="disaster-link">
               <i class="fas fa-wind"></i>
               <span data-translate="disaster-cyclone">Cyclones</span>
           </a>
       </div>
       <div class="disaster-circle" data-type="landslide">
-          <a href="../Live_map/live_map?disaster=landslides" class="disaster-link">
+          <a href="../Live_map/live_map.html?disaster=landslide" class="disaster-link">
               <i class="fas fa-mountain"></i>
               <span data-translate="disaster-landslide">Landslides</span>
           </a>
       </div>
     </div>
+    
 
     <div class="map-tooltip">
       <h3 data-translate="map-tooltip-title">Interactive Disaster Map</h3>
@@ -132,23 +133,5 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    // Add click tracking for disaster links
-    document.querySelectorAll('.disaster-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Get the disaster type from URL
-            const type = this.href.split('disaster=')[1];
-            console.log('Navigating to:', type, 'disaster map');
-            
-            // Add transition effect
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                window.location.href = this.href;
-            }, 300);
-            
-            e.preventDefault();
-        });
-    });
-  </script>
 </body>
 </html>

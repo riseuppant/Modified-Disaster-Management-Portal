@@ -10,6 +10,92 @@
     max-height: 150px;
     overflow-y: auto;
 }
+.legend {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    line-height: 1.5;
+    max-width: 200px;
+}
+
+.legend h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+/* Custom marker styles */
+.earthquake-marker {
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid white;
+    transition: transform 0.2s;
+}
+
+.earthquake-marker:hover {
+    transform: scale(1.2);
+    z-index: 1000 !important;
+}
+
+.magnitude-1 {
+    background-color: #FFD700;
+}
+
+.magnitude-2 {
+    background-color: #FFA500;
+}
+
+.magnitude-3 {
+    background-color: #FF8C00;
+}
+
+.magnitude-4 {
+    background-color: #D84315;
+}
+
+.magnitude-5 {
+    background-color: #B71C1C;
+}
+
+.custom-popup {
+    max-width: 300px;
+}
+
+.custom-popup .location {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.custom-popup .magnitude {
+    color: #B71C1C;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.custom-popup .details {
+    margin-top: 8px;
+    max-height: 120px;
+    overflow-y: auto;
+}
 #search-container {
     position: absolute;
     top: 10px;

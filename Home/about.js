@@ -274,7 +274,16 @@ document.addEventListener('click', (event) => {
         digitalVigilance.classList.remove('box-hidden');
     }
 });
-
+document.querySelectorAll('.disaster-circle').forEach(circle => {
+    circle.addEventListener('click', function() {
+        // Get the disaster type from the circle's data attribute
+        const disasterType = this.getAttribute('data-disaster-type');
+        const location = this.getAttribute('data-location');
+        
+        // Redirect to livemap.html with query parameters
+        window.location.href = `livemap.html?disaster=${disasterType}&location=${location}`;
+    });
+});
 // Update the click handlers
 mapTooltip.addEventListener('click', toggleMapsView);
 sideNav.addEventListener('click', toggleMapsView);
