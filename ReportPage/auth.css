@@ -18,7 +18,38 @@ body {
     max-width: 1200px;
     padding: 20px;
 }
+.home-button-container {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 100; /* Ensures button stays on top of other content */
+}
 
+/* Home button styling */
+.home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3498db;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Home icon */
+.home-icon {
+    font-size: 24px;
+}
+
+/* Hover effect */
+.home-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
 .auth-container {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;

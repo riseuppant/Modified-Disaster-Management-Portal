@@ -1,470 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Disaster Preparedness Hub</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link rel="stylesheet" href="preparedness.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Preparedness Portal</title>
+    <link rel="stylesheet" href="preparedness.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="preparedness-container">
-    <!-- Back button -->
-    <a href="../Home/about.html" class="back-button">
-      <i class="fas fa-arrow-left"></i> <span data-i18n="back">Back to Home</span>
-    </a>
-
-    <!-- Accessibility Controls -->
-    <div class="accessibility-controls">
-      
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
-          <a class="dropdown-item" href="#" data-lang="en">English</a>
-          <a class="dropdown-item" href="#" data-lang="hi">हिंदी (Hindi)</a>
-          <a class="dropdown-item" href="#" data-lang="ta">தமிழ் (Tamil)</a>
-          <a class="dropdown-item" href="#" data-lang="te">తెలుగు (Telugu)</a>
-          <a class="dropdown-item" href="#" data-lang="bn">বাংলা (Bengali)</a>
-        </div>
-      </div>
+    <div class="home-button-container">
+        <a href="../Home/about.html" class="home-button">
+            <span class="home-icon">⌂</span>
+        </a>
     </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>"Preparation is not just about survival, but about thriving in the face of adversity."</h1>
+            <p>Be prepared before disaster strikes. Learn how to protect yourself, your loved ones, and your community.</p>
+            <button class="cta-button" onclick="location.href='#safety-videos'">Learn How to Stay Safe</button>
 
-    <!-- Page Header -->
-    <div class="page-header animate__animated animate__fadeIn">
-      <h1 data-i18n="main-title">Disaster Preparedness Hub</h1>
-      <p data-i18n="main-subtitle">Be ready, stay safe. Learn how to prepare for disasters and protect yourself and your loved ones.</p>
-    </div>
+            
+        </div>
+    </section>
 
-    <!-- Disaster Type Tabs -->
-    <div class="disaster-tabs animate__animated animate__fadeInUp animate__delay-2s">
-      <div class="disaster-tab active" data-tab="earthquake">
-        <i class="fas fa-house-damage"></i> <span data-i18n="tab-earthquake">Earthquake</span>
-      </div>
-      <div class="disaster-tab" data-tab="flood">
-        <i class="fas fa-water"></i> <span data-i18n="tab-flood">Flood</span>
-      </div>
-      <div class="disaster-tab" data-tab="cyclone">
-        <i class="fas fa-wind"></i> <span data-i18n="tab-cyclone">Cyclone</span>
-      </div>
-      <div class="disaster-tab" data-tab="fire">
-        <i class="fas fa-fire"></i> <span data-i18n="tab-fire">Fire</span>
-      </div>
-      <div class="disaster-tab" data-tab="landslide">
-        <i class="fas fa-mountain"></i> <span data-i18n="tab-landslide">Landslide</span>
-      </div>
-    </div>
+    <!-- Disaster Preparedness Categories -->
+    <section class="disaster-categories">
+        <h2>Disaster Preparedness Categories</h2>
+        <div class="categories-container">
+            <div class="category-card" data-category="earthquake">
+                <div class="card-front">
+                    <i class="fas fa-house-damage"></i>
+                    <h3>Earthquake</h3>
+                    <p>Prepare for seismic events with these guidelines.</p>
+                </div>
+                <div class="card-back">
+                    <h3>Earthquake Preparedness</h3>
+                    <p>Before an earthquake:</p>
+                    <ul>
+                        <li>Secure heavy furniture to walls</li>
+                        <li>Know the safe spots in each room</li>
+                        <li>Have emergency supplies ready</li>
+                    </ul>
+                    <p>During an earthquake:</p>
+                    <ul>
+                        <li>Drop, Cover, and Hold On</li>
+                        <li>Stay away from windows</li>
+                        <li>If outdoors, move to an open area</li>
+                    </ul>
+                    <button class="read-more" data-category="earthquake">View Detailed Guidelines</button>
+                </div>
+            </div>
+            <div class="category-card" data-category="flood">
+                <div class="card-front">
+                    <i class="fas fa-water"></i>
+                    <h3>Flood</h3>
+                    <p>Essential preparedness for flood situations.</p>
+                </div>
+                <div class="card-back">
+                    <h3>Flood Preparedness</h3>
+                    <p>Before a flood:</p>
+                    <ul>
+                        <li>Prepare an emergency kit</li>
+                        <li>Know evacuation routes</li>
+                        <li>Move valuable items to higher levels</li>
+                    </ul>
+                    <p>During a flood:</p>
+                    <ul>
+                        <li>Avoid walking through flowing water</li>
+                        <li>Do not drive through flooded areas</li>
+                        <li>Listen to emergency broadcasts</li>
+                    </ul>
+                    <button class="read-more" data-category="flood">View Detailed Guidelines</button>
+                </div>
+            </div>
+            <div class="category-card" data-category="cyclone">
+                <div class="card-front">
+                    <i class="fas fa-wind"></i>
+                    <h3>Cyclone</h3>
+                    <p>Be ready for high winds and heavy rainfall.</p>
+                </div>
+                <div class="card-back">
+                    <h3>Cyclone Preparedness</h3>
+                    <p>Before a cyclone:</p>
+                    <ul>
+                        <li>Secure loose items outside your home</li>
+                        <li>Prepare emergency kit and evacuation plan</li>
+                        <li>Board up windows and secure doors</li>
+                    </ul>
+                    <p>During a cyclone:</p>
+                    <ul>
+                        <li>Stay indoors away from windows</li>
+                        <li>Listen to emergency broadcasts</li>
+                        <li>If evacuating, leave early</li>
+                    </ul>
+                    <button class="read-more" data-category="cyclone">View Detailed Guidelines</button>
+                </div>
+            </div>
+            <div class="category-card" data-category="landslide">
+                <div class="card-front">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Landslide</h3>
+                    <p>Safety measures for areas prone to landslides.</p>
+                </div>
+                <div class="card-back">
+                    <h3>Landslide Preparedness</h3>
+                    <p>Before a landslide:</p>
+                    <ul>
+                        <li>Be aware of warning signs like tilting trees</li>
+                        <li>Prepare an emergency kit</li>
+                        <li>Know evacuation routes</li>
+                    </ul>
+                    <p>During a landslide:</p>
+                    <ul>
+                        <li>Evacuate immediately if possible</li>
+                        <li>Move to higher ground</li>
+                        <li>Watch for flooding that may accompany landslides</li>
+                    </ul>
+                    <button class="read-more" data-category="landslide">View Detailed Guidelines</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Earthquake Tab Content -->
-    <div class="tab-content active" id="earthquake-content">
-      <div class="preparedness-grid">
-        <!-- Before Earthquake -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-clock"></i> <span data-i18n="eq-before-title">Before an Earthquake</span></h3>
-          <div class="checklist">
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-check-1" class="preparedness-checkbox">
-              <label for="eq-check-1" data-i18n="eq-before-1">Secure heavy furniture to walls</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-check-2" class="preparedness-checkbox">
-              <label for="eq-check-2" data-i18n="eq-before-2">Know how to turn off gas, water, and electricity</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-check-3" class="preparedness-checkbox">
-              <label for="eq-check-3" data-i18n="eq-before-3">Prepare an emergency kit</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-check-4" class="preparedness-checkbox">
-              <label for="eq-check-4" data-i18n="eq-before-4">Identify safe spots in each room</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-check-5" class="preparedness-checkbox">
-              <label for="eq-check-5" data-i18n="eq-before-5">Practice "Drop, Cover, and Hold On" drills</label>
-            </div>
-          </div>
-          <div class="card-actions">
-            <a href="#" class="quick-action-btn" download="earthquake-checklist.pdf">
-              <i class="fas fa-download"></i> <span data-i18n="download-checklist">Download Checklist</span>
-            </a>
-          </div>
+    <!-- Do's and Don'ts Section -->
+    <section class="dos-donts" id="dosdonts">
+        <h2>Do's and Don'ts During Disasters</h2>
+        <div class="disaster-selector">
+            <button class="selector-btn active" data-disaster="earthquake">Earthquake</button>
+            <button class="selector-btn" data-disaster="flood">Flood</button>
+            <button class="selector-btn" data-disaster="cyclone">Cyclone</button>
+            <button class="selector-btn" data-disaster="landslide">Landslide</button>
+            <button class="selector-btn" data-disaster="landslide">Tsunami</button>
         </div>
+        
+        <div class="dos-donts-container">
+            <div class="disaster-content active" id="earthquake-content">
+                <div class="do-section">
+                    <h3><i class="fas fa-check-circle"></i> Do's</h3>
+                    <ul>
+                        <li>Drop to the ground</li>
+                        <li>Take cover under sturdy furniture</li>
+                        <li>Hold on until shaking stops</li>
+                        <li>Stay indoors until the shaking stops</li>
+                        <li>Be prepared for aftershocks</li>
+                    </ul>
+                </div>
+                <div class="dont-section">
+                    <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                    <ul>
+                        <li>Don't run outside during shaking</li>
+                        <li>Don't use elevators</li>
+                        <li>Don't stand in doorways</li>
+                        <li>Don't light matches or candles</li>
+                        <li>Don't move severely injured people</li>
+                    </ul>
+                </div>
+            </div>
+        
+            
+            <div class="disaster-content" id="flood-content">
+                <div class="do-section">
+                    <h3><i class="fas fa-check-circle"></i> Do's</h3>
+                    <ul>
+                        <li>Move to higher ground immediately</li>
+                        <li>Listen to official instructions</li>
+                        <li>Turn off utilities if instructed</li>
+                        <li>Prepare an emergency kit</li>
+                        <li>Avoid contaminated water</li>
+                    </ul>
+                </div>
+                <div class="dont-section">
+                    <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                    <ul>
+                        <li>Don't walk through flowing water</li>
+                        <li>Don't drive through flooded areas</li>
+                        <li>Don't touch electrical equipment if wet</li>
+                        <li>Don't use appliances that have been wet</li>
+                        <li>Don't ignore evacuation orders</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="disaster-content" id="cyclone-content">
+                <div class="do-section">
+                    <h3><i class="fas fa-check-circle"></i> Do's</h3>
+                    <ul>
+                        <li>Secure your home</li>
+                        <li>Stock up on emergency supplies</li>
+                        <li>Stay updated with weather reports</li>
+                        <li>Keep important documents in waterproof containers</li>
+                        <li>Follow evacuation orders immediately</li>
+                    </ul>
+                </div>
+                <div class="dont-section">
+                    <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                    <ul>
+                        <li>Don't go outside during the cyclone</li>
+                        <li>Don't stay in mobile homes</li>
+                        <li>Don't ignore warnings</li>
+                        <li>Don't use candles for lighting</li>
+                        <li>Don't venture out until all-clear is given</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="disaster-content" id="landslide-content">
+                <div class="do-section">
+                    <h3><i class="fas fa-check-circle"></i> Do's</h3>
+                    <ul>
+                        <li>Listen for unusual sounds</li>
+                        <li>Evacuate if instructed</li>
+                        <li>Watch for changes in water flow</li>
+                        <li>Move away from the landslide area quickly</li>
+                        <li>Contact local authorities about hazards</li>
+                    </ul>
+                </div>
+                <div class="dont-section">
+                    <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                    <ul>
+                        <li>Don't stay in the path of a landslide</li>
+                        <li>Don't return to affected area until authorities allow</li>
+                        <li>Don't build near steep slopes</li>
+                        <li>Don't ignore warning signs</li>
+                        <li>Don't remove debris without professional help</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dos-donts-container">
+                <div class="disaster-content active" id="tsunami-content">
+                  <div class="do-section">
+                    <h3><i class="fas fa-check-circle"></i> Do's</h3>
+                    <ul>
+                      <li>Move to higher ground immediately</li>
+                      <li>Follow evacuation orders from local authorities</li>
+                      <li>Stay away from beaches and coastal areas</li>
+                      <li>Listen to emergency alerts and warnings</li>
+                      <li>Help others evacuate if possible</li>
+                    </ul>
+                  </div>
+                  <div class="dont-section">
+                    <h3><i class="fas fa-times-circle"></i> Don'ts</h3>
+                    <ul>
+                      <li>Don't ignore tsunami warnings</li>
+                      <li>Don't stay near coastal waters to watch the waves</li>
+                      <li>Don't return to low-lying areas until officials say it's safe</li>
+                      <li>Don't drive through flooded roads</li>
+                      <li>Don't rely solely on visual cues to detect a tsunami</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+    </section>
 
-        <!-- During Earthquake -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-exclamation-triangle"></i> <span data-i18n="eq-during-title">During an Earthquake</span></h3>
-          <ul>
-            <li data-i18n="eq-during-1">Drop to the ground, take cover under sturdy furniture, and hold on</li>
-            <li data-i18n="eq-during-2">Stay away from windows, outside doors, and walls</li>
-            <li data-i18n="eq-during-3">If outdoors, stay in the open away from buildings, streetlights, and utility wires</li>
-            <li data-i18n="eq-during-4">If in a vehicle, pull over to a clear location and stop</li>
-            <li data-i18n="eq-during-5">Wait until the shaking stops before moving</li>
-          </ul>
-          <div class="card-actions">
-            <button class="quick-action-btn" id="show-earthquake-demo">
-              <i class="fas fa-play-circle"></i> <span data-i18n="view-demo">View Safety Demo</span>
-            </button>
-          </div>
+    <!-- Emergency Kit Checklist -->
+    <section class="emergency-kit">
+        <h2>Emergency Kit Checklist</h2>
+        <p>Check off items as you add them to your emergency kit.</p>
+        
+        <div class="kit-container">
+            <div class="kit-column">
+                <h3>Basic Supplies</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="water">
+                    <label for="water">Water (1 gallon per person per day)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="food">
+                    <label for="food">Non-perishable food (3-day supply)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="radio">
+                    <label for="radio">Battery-powered or hand-crank radio</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="flashlight">
+                    <label for="flashlight">Flashlight with extra batteries</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="firstaid">
+                    <label for="firstaid">First aid kit</label>
+                </div>
+            </div>
+            
+            <div class="kit-column">
+                <h3>Additional Items</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="whistle">
+                    <label for="whistle">Whistle to signal for help</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="mask">
+                    <label for="mask">Dust masks</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="plastic">
+                    <label for="plastic">Plastic sheeting and duct tape</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="wipes">
+                    <label for="wipes">Moist towelettes and garbage bags</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="tools">
+                    <label for="tools">Wrench or pliers to turn off utilities</label>
+                </div>
+            </div>
+            
+            <div class="kit-column">
+                <h3>Personal Items</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="medications">
+                    <label for="medications">Prescription medications</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="glasses">
+                    <label for="glasses">Extra glasses or contact lenses</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="documents">
+                    <label for="documents">Important family documents</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="cash">
+                    <label for="cash">Cash and change</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="blanket">
+                    <label for="blanket">Emergency blanket</label>
+                </div>
+            </div>
         </div>
+        
+        
+    </section>
 
-        <!-- After Earthquake -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-first-aid"></i> <span data-i18n="eq-after-title">After an Earthquake</span></h3>
-          <ul>
-            <li data-i18n="eq-after-1">Check yourself and others for injuries</li>
-            <li data-i18n="eq-after-2">Inspect your home for damage, especially gas leaks</li>
-            <li data-i18n="eq-after-3">Be prepared for aftershocks</li>
-            <li data-i18n="eq-after-4">Listen to local news for emergency information</li>
-            <li data-i18n="eq-after-5">Stay away from damaged areas unless authorities request assistance</li>
-          </ul>
-          <div class="card-actions">
-            <a href="#emergency-contacts" class="quick-action-btn secondary">
-              <i class="fas fa-phone"></i> <span data-i18n="emergency-contacts">Emergency Contacts</span>
-            </a>
-          </div>
+    <!-- Government Resources Section -->
+    <section class="government-resources">
+        <h2>Government Resources and Data</h2>
+        <p>Access official guidelines, reports, and safety manuals from trusted sources.</p>
+        
+        <div class="resources-container">
+            <div class="resource-card">
+                <h3>Official Guidelines</h3>
+                <ul>
+                    <li><a href="./Documents/earthquakes.pdf" target="_blank"><i class="fas fa-file-pdf"></i> National Earthquake Preparedness Guide</a></li>
+                    <li><a href="./Documents/floodmgmt.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Flood Safety Manual</a></li>
+                    <li><a href="./Documents/cyclones.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Cyclone Preparedness Handbook</a></li>
+                    <li><a href="./Documents/landslidessnowavalanches.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Landslide Risk Assessment Guide</a></li>
+                </ul>
+            </div>
+            
+            <div class="resource-card">
+                <h3>Research Reports</h3>
+                <ul>
+                    <li><a href="./Documents/AnnualDisasterReport.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Annual Disaster Statistics Report</a></li>
+                    <li><a href="./Documents/TERI_Climate Change.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Climate Change Impact Assessment</a></li>
+                    <li><a href="files/evacuation_research.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Evacuation Research Findings</a></li>
+                    <li><a href="Documents/handbook_pdna.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Post-Disaster Recovery Studies</a></li>
+                </ul>
+            </div>
+            
+            <div class="resource-card">
+                <h3>Safety Manuals</h3>
+                <ul>
+                    <li><a href="./Documents/CES_SchoolEmergencyInformationGuide.pdf" target="_blank"><i class="fas fa-file-pdf"></i> School Safety Protocol</a></li>
+                    <li><a href="./Documents/guidelines_hospital_emergency.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Hospital Preparedness Guide</a></li>
+                    <li><a href="./Documents/" target="_blank"><i class="fas fa-file-pdf"></i> Elderly Care During Disasters</a></li>
+                    <li><a href="./Documents/Wholistic_Paws_Basic_First_Aid.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Pet Safety During Emergencies</a></li>
+                </ul>
+            </div>
+            
         </div>
+    </section>
 
-        <!-- Emergency Kit -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-briefcase-medical"></i> <span data-i18n="emergency-kit">Emergency Kit</span></h3>
-          <div class="checklist">
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-kit-1" class="preparedness-checkbox">
-              <label for="eq-kit-1" data-i18n="eq-kit-1">Water (4 liters per person per day)</label>
+    <!-- Safety Videos Section -->
+    <section id="safety-videos" class="safety-videos">
+        <h2>Safety Videos and Guides</h2>
+        <p>Watch these informative videos to learn essential safety measures.</p>
+        
+        <div class="videos-container">
+            <div class="video-card">
+                <h3>Earthquake Safety</h3>
+                <div class="video-placeholder">
+                  <a href="https://www.youtube.com/watch?v=BLEPakj1YTY" target="_blank" class="video-link">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Earthquake Safety Video Series</p>
+                  </a>
+                </div>
+                <a href="./Documents/fema_b-526-eq-safety-checklist.pdf" class="download-link" target="_blank">
+                  <i class="fas fa-download"></i> Download PDF Guide
+                </a>
+              </div>
+              
+              <div class="video-card">
+                <h3>Flood Response</h3>
+                <div class="video-placeholder">
+                  <a href="https://www.youtube.com/watch?v=uWaCswJwX5g" target="_blank" class="video-link">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Flood Response and Substantial Damage Determinations</p>
+                  </a>
+                </div>
+                <a href="./Documents/SOP Urban flooding_5 May 2017.pdf" class="download-link" target="_blank">
+                  <i class="fas fa-download"></i> Download PDF Guide
+                </a>
+              </div>
+              
+              <div class="video-card">
+                <h3>Cyclone Preparation</h3>
+                <div class="video-placeholder">
+                  <a href="https://www.youtube.com/watch?v=3b4uSCdFwjc" target="_blank" class="video-link">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Emergency Action Plans & Flood Response Plans Explained</p>
+                  </a>
+                </div>
+                <a href="./Documents/cyclone_sop.pdf" class="download-link" target="_blank">
+                  <i class="fas fa-download"></i> Download PDF Guide
+                </a>
+              </div>
+              
+              <div class="video-card">
+                <h3>Landslide Awareness</h3>
+                <div class="video-placeholder">
+                  <a href="https://www.youtube.com/watch?v=vHqTF1u8kuc" target="_blank" class="video-link">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Landslide Preparedness</p>
+                </a>
+              </div>
+              <a href="./Documents/Fact Sheet Recognize Landslide Warning Signs.pdf" class="download-link" target="_blank">
+                <i class="fas fa-download"></i> Download PDF Guide
+              </a>
             </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-kit-2" class="preparedness-checkbox">
-              <label for="eq-kit-2" data-i18n="eq-kit-2">Non-perishable food for 3 days</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-kit-3" class="preparedness-checkbox">
-              <label for="eq-kit-3" data-i18n="eq-kit-3">First aid kit and medications</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-kit-4" class="preparedness-checkbox">
-              <label for="eq-kit-4" data-i18n="eq-kit-4">Flashlight and extra batteries</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-kit-5" class="preparedness-checkbox">
-              <label for="eq-kit-5" data-i18n="eq-kit-5">Battery-powered or hand-crank radio</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-kit-6" class="preparedness-checkbox">
-              <label for="eq-kit-6" data-i18n="eq-kit-6">Whistle to signal for help</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="eq-kit-7" class="preparedness-checkbox">
-              <label for="eq-kit-7" data-i18n="eq-kit-7">Important documents in waterproof container</label>
-            </div>
-          </div>
+                       
         </div>
-      </div>
+    </section>
 
-     
-      </div>
-    </div>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
-    <!-- Flood Tab Content -->
-    <div class="tab-content" id="flood-content">
-      <div class="preparedness-grid">
-        <!-- Before Flood -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-clock"></i> <span data-i18n="flood-before-title">Before a Flood</span></h3>
-          <div class="checklist">
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-check-1" class="preparedness-checkbox">
-              <label for="flood-check-1" data-i18n="flood-before-1">Know your area's flood risk</label>
+    <!-- Resource Links and Emergency Contacts -->
+    <section class="emergency-contacts">
+        <h2>Resource Links and Emergency Contacts</h2>
+        
+        <div class="contacts-container">
+            <div class="contact-card">
+                <h3>National Emergency Contacts</h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-details">
+                        <h4>National Emergency Helpline</h4>
+                        <p>112</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-ambulance"></i>
+                    <div class="contact-details">
+                        <h4>Ambulance Services</h4>
+                        <p>108</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-fire-extinguisher"></i>
+                    <div class="contact-details">
+                        <h4>Fire Department</h4>
+                        <p>101</p>
+                    </div>
+                </div>
             </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-check-2" class="preparedness-checkbox">
-              <label for="flood-check-2" data-i18n="flood-before-2">Prepare an emergency kit</label>
+            
+            <div class="contact-card">
+                <h3>Government Agencies</h3>
+                <div class="contact-item">
+                    <i class="fas fa-building"></i>
+                    <div class="contact-details">
+                        <h4>National Disaster Management Authority</h4>
+                        <p>📞+91-11-1078</p>
+                        <a href="https://ndma.gov.in" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-cloud-sun-rain"></i>
+                    <div class="contact-details">
+                        <h4>Meteorological Department</h4>
+                        <p>📞 +91-11-24631900</p>
+                        <a href="https://mausam.imd.gov.in" target="_blank">Visit Website</a>
+                    </div>
+                </div>
             </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-check-3" class="preparedness-checkbox">
-              <label for="flood-check-3" data-i18n="flood-before-3">Create a family emergency plan</label>
+            
+            <div class="contact-card">
+                <h3>NGO Support</h3>
+                <div class="contact-item">
+                    <i class="fas fa-hands-helping"></i>
+                    <div class="contact-details">
+                        <h4>Red Cross</h4>
+                        <p>📞 +91-11-23359379</p>
+                        <a href="https://indianredcross.org" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-heart"></i>
+                    <div class="contact-details">
+                        <h4>Disaster Relief Foundation</h4>
+                        <p>📞 +91-22-28453113</p>
+                        <a href="https://drf.org.in" target="_blank">Visit Website</a>
+                    </div>
+                </div>
             </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-check-4" class="preparedness-checkbox">
-              <label for="flood-check-4" data-i18n="flood-before-4">Install check valves in plumbing</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-check-5" class="preparedness-checkbox">
-              <label for="flood-check-5" data-i18n="flood-before-5">Keep important documents in a waterproof container</label>
-            </div>
-          </div>
-          <div class="card-actions">
-            <a href="#" class="quick-action-btn" download="flood-checklist.pdf">
-              <i class="fas fa-download"></i> <span data-i18n="download-checklist">Download Checklist</span>
-            </a>
-          </div>
         </div>
+    </section>
 
-        <!-- During Flood -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-exclamation-triangle"></i> <span data-i18n="flood-during-title">During a Flood</span></h3>
-          <ul>
-            <li data-i18n="flood-during-1">Listen to local alerts and warning systems</li>
-            <li data-i18n="flood-during-2">If told to evacuate, do so immediately</li>
-            <li data-i18n="flood-during-3">Never walk, swim, or drive through flood waters</li>
-            <li data-i18n="flood-during-4">Stay off bridges over fast-moving water</li>
-            <li data-i18n="flood-during-5">Move to higher ground or a higher floor</li>
-          </ul>
-          <div class="card-actions">
-            <button class="quick-action-btn" id="show-flood-demo">
-              <i class="fas fa-play-circle"></i> <span data-i18n="view-demo">View Safety Demo</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- After Flood -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-first-aid"></i> <span data-i18n="flood-after-title">After a Flood</span></h3>
-          <ul>
-            <li data-i18n="flood-after-1">Return home only when authorities say it's safe</li>
-            <li data-i18n="flood-after-2">Avoid walking or driving through flood waters</li>
-            <li data-i18n="flood-after-3">Use caution when entering buildings</li>
-            <li data-i18n="flood-after-4">Wear protective clothing during cleanup</li>
-            <li data-i18n="flood-after-5">Be aware of electrocution risk if electrical systems are damaged</li>
-          </ul>
-          <div class="card-actions">
-            <a href="#emergency-contacts" class="quick-action-btn secondary">
-              <i class="fas fa-phone"></i> <span data-i18n="emergency-contacts">Emergency Contacts</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Flood Emergency Kit -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-briefcase-medical"></i> <span data-i18n="flood-kit-title">Flood Emergency Kit</span></h3>
-          <div class="checklist">
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-kit-1" class="preparedness-checkbox">
-              <label for="flood-kit-1" data-i18n="flood-kit-1">Water (4 liters per person per day)</label>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Disaster Preparedness Portal</h3>
+                <p>Stay safe, stay prepared</p>
             </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-kit-2" class="preparedness-checkbox">
-              <label for="flood-kit-2" data-i18n="flood-kit-2">Non-perishable food for 3 days</label>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#dosdonts">Do's and Don'ts</a></li>
+                    <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+                    <li><a href="#" id="terms-link">Terms of Use</a></li>
+                    <li><a href="#" id="contact-link">Contact Us</a></li>
+                </ul>
             </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-kit-3" class="preparedness-checkbox">
-              <label for="flood-kit-3" data-i18n="flood-kit-3">First aid kit and medications</label>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>
+                  The Guidelines documents are sourced from official government and authoritative websites. All rights belong to their respective owners. 
+                  For any copyright concerns, please <a href="contact.html">contact us</a>.
+                </p>
             </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-kit-4" class="preparedness-checkbox">
-              <label for="flood-kit-4" data-i18n="flood-kit-4">Waterproof clothing and blankets</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-kit-5" class="preparedness-checkbox">
-              <label for="flood-kit-5" data-i18n="flood-kit-5">Rubber boots and gloves</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-kit-6" class="preparedness-checkbox">
-              <label for="flood-kit-6" data-i18n="flood-kit-6">Battery-powered radio</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="flood-kit-7" class="preparedness-checkbox">
-              <label for="flood-kit-7" data-i18n="flood-kit-7">Waterproof container for documents</label>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <!-- Flood Evacuation Map -->
-      <div class="evacuation-map-container animate__animated animate__fadeIn animate__delay-3s">
-        <h3 class="map-title"><i class="fas fa-map-marked-alt"></i> <span data-i18n="flood-evacuation-map">Flood Evacuation Map</span></h3>
-        <div id="flood-evacuation-map" class="evacuation-map"></div>
-        <div class="map-controls">
-          <button id="flood-locate-me" title="Find my location"><i class="fas fa-location-arrow"></i></button>
-          <button id="flood-show-shelters" title="Show evacuation shelters"><i class="fas fa-home"></i></button>
-          <button id="flood-show-hospitals" title="Show hospitals"><i class="fas fa-hospital"></i></button>
+        <div class="copyright">
+            <p>&copy; 2025 Disaster Preparedness Portal. All rights reserved.</p>
         </div>
-      </div>
-    </div>
-
-    <!-- Cyclone Tab Content -->
-    <div class="tab-content" id="cyclone-content">
-      <!-- Similar structure as earthquake and flood tabs -->
-      <div class="preparedness-grid">
-        <!-- Before Cyclone -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-clock"></i> <span data-i18n="cyclone-before-title">Before a Cyclone</span></h3>
-          <div class="checklist">
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-check-1" class="preparedness-checkbox">
-              <label for="cyclone-check-1" data-i18n="cyclone-before-1">Know your evacuation routes</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-check-2" class="preparedness-checkbox">
-              <label for="cyclone-check-2" data-i18n="cyclone-before-2">Secure loose items outside your home</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-check-3" class="preparedness-checkbox">
-              <label for="cyclone-check-3" data-i18n="cyclone-before-3">Trim trees and branches near your home</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-check-4" class="preparedness-checkbox">
-              <label for="cyclone-check-4" data-i18n="cyclone-before-4">Install storm shutters or board up windows</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-check-5" class="preparedness-checkbox">
-              <label for="cyclone-check-5" data-i18n="cyclone-before-5">Prepare an emergency kit</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- During Cyclone -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-exclamation-triangle"></i> <span data-i18n="cyclone-during-title">During a Cyclone</span></h3>
-          <ul>
-            <li data-i18n="cyclone-during-1">Stay indoors and away from windows</li>
-            <li data-i18n="cyclone-during-2">Take shelter in the strongest part of your house</li>
-            <li data-i18n="cyclone-during-3">Listen to a battery-powered radio for updates</li>
-            <li data-i18n="cyclone-during-4">Turn off utilities if instructed to do so</li>
-            <li data-i18n="cyclone-during-5">If evacuation is ordered, leave immediately</li>
-          </ul>
-        </div>
-
-        <!-- After Cyclone -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-first-aid"></i> <span data-i18n="cyclone-after-title">After a Cyclone</span></h3>
-          <ul>
-            <li data-i18n="cyclone-after-1">Stay away from damaged areas</li>
-            <li data-i18n="cyclone-after-2">Watch out for fallen power lines</li>
-            <li data-i18n="cyclone-after-3">Avoid floodwaters which may be contaminated</li>
-            <li data-i18n="cyclone-after-4">Check on neighbors, especially the elderly</li>
-            <li data-i18n="cyclone-after-5">Document damage for insurance purposes</li>
-          </ul>
-        </div>
-
-        <!-- Cyclone Emergency Kit -->
-        <div class="preparedness-card animate__animated">
-          <h3><i class="fas fa-briefcase-medical"></i> <span data-i18n="cyclone-kit-title">Cyclone Emergency Kit</span></h3>
-          <div class="checklist">
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-kit-1" class="preparedness-checkbox">
-              <label for="cyclone-kit-1" data-i18n="cyclone-kit-1">Water (4 liters per person per day)</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-kit-2" class="preparedness-checkbox">
-              <label for="cyclone-kit-2" data-i18n="cyclone-kit-2">Non-perishable food for 3 days</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-kit-3" class="preparedness-checkbox">
-              <label for="cyclone-kit-3" data-i18n="cyclone-kit-3">First aid kit and medications</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-kit-4" class="preparedness-checkbox">
-              <label for="cyclone-kit-4" data-i18n="cyclone-kit-4">Battery-powered radio</label>
-            </div>
-            <div class="checklist-item">
-              <input type="checkbox" id="cyclone-kit-5" class="preparedness-checkbox">
-              <label for="cyclone-kit-5" data-i18n="cyclone-kit-5">Flashlight and extra batteries</label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Fire and Landslide tabs would follow the same pattern -->
-
-    <!-- Preparedness Quiz -->
-    <div class="quiz-container animate__animated animate__fadeIn animate__delay-4s">
-      <h2 data-i18n="quiz-title">Test Your Preparedness Knowledge</h2>
-      <p data-i18n="quiz-subtitle">Answer these questions to see how prepared you are for disasters.</p>
-      
-      <div class="quiz-question">
-        <h4 data-i18n="quiz-q1">1. What should you do first during an earthquake?</h4>
-        <div class="quiz-options">
-          <div class="quiz-option" data-correct="true" data-i18n="quiz-q1-a1">Drop, cover, and hold on</div>
-          <div class="quiz-option" data-i18n="quiz-q1-a2">Run outside immediately</div>
-          <div class="quiz-option" data-i18n="quiz-q1-a3">Stand in a doorway</div>
-          <div class="quiz-option" data-i18n="quiz-q1-a4">Call emergency services</div>
-        </div>
-      </div>
-      
-      <div class="quiz-question">
-        <h4 data-i18n="quiz-q2">2. How much water should you store per person per day in your emergency kit?</h4>
-        <div class="quiz-options">
-          <div class="quiz-option" data-i18n="quiz-q2-a1">1 liter</div>
-          <div class="quiz-option" data-correct="true" data-i18n="quiz-q2-a2">4 liters</div>
-          <div class="quiz-option" data-i18n="quiz-q2-a3">2 liters</div>
-          <div class="quiz-option" data-i18n="quiz-q2-a4">8 liters</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Emergency Contacts -->
-    <div id="emergency-contacts" class="emergency-contacts animate__animated animate__fadeIn animate__delay-4s">
-      <h2 data-i18n="emergency-contacts-title">Emergency Contacts</h2>
-      
-      <div class="emergency-contact-item">
-        <div class="emergency-contact-icon">
-          <i class="fas fa-ambulance"></i>
-        </div>
-        <div class="emergency-contact-info">
-          <h4 data-i18n="emergency-ambulance">Ambulance</h4>
-          <p>108 / 102</p>
-        </div>
-        <div class="emergency-contact-action">
-          <a href="tel:108" class="call-button">
-            <i class="fas fa-phone"></i> <span data-i18n="call">Call</span>
-          </a>
-        </div>
-      </div>
-      
-      <div class="emergency-contact-item">
-        <div class="emergency-contact-icon">
-          <i class="fas fa-fire-extinguisher"></i>
-        </div>
-        <div class="emergency-contact-info">
-          <h4 data-i18n="emergency-fire">Fire Department</h4>
-          <p>101</p>
-        </div>
-        <div class="emergency-contact-action">
-          <a href="tel:101" class="call-button">
-            <i class="fas fa-phone"></i> <span data-i18n="call">Call</span>
-          </a>
-        </div>
-      </div>
-      
-      <div class="emergency-contact-item">
-        <div class="emergency-contact-icon">
-          <i class="fas fa-shield-alt"></i>
-        </div>
-        <div class="emergency-contact-info">
-          <h4 data-i18n="emergency-police">Police</h4>
-          <p>100</p>
-        </div>
-        <div class="emergency-contact-action">
-          <a href="tel:100" class="call-button">
-            <i class="fas fa-phone"></i> <span data-i18n="call">Call</span>
-          </a>
-        </div>
-      </div>
-      
-      <div class="emergency-contact-item">
-        <div class="emergency-contact-icon">
-          <i class="fas fa-hands-helping"></i>
-        </div>
-        <div class="emergency-contact-info">
-          <h4 data-i18n="emergency-ndrf">National Disaster Response Force</h4>
-          <p>011-24363260</p>
-        </div>
-        <div class="emergency-contact-action">
-          <a href="tel:01124363260" class="call-button">
-            <i class="fas fa-phone"></i> <span data-i18n="call">Call</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Loading Overlay -->
-    
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://unpkg.com/leaflet@1.7.1/
+    <script src="preparedness.js"></script>
+</body>
+</html>

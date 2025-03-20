@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Disaster Data</title>
+  <link rel="stylesheet" href="database.css">
+</head>
+<body>
+  <canvas id="canvas-bg"></canvas>
+  
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="../Home/about.html" class="home-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span>Home</span>
+      </a>
+      <div class="nav-title">Disaster Management Portal</div>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <header>
+      <h1>Download Disaster Data</h1>
+      <p class="header-description">
+        Access comprehensive datasets related to various natural disasters. These datasets contain historical information, impact assessments, and geographical data to aid in research, planning, and preparedness efforts.
+      </p>
+    </header>
+    
+    <section class="disaster-section">
+      <h2>Individual Disaster Datasets</h2>
+      
+      <div class="disaster-grid">
+        <div class="disaster-card" data-type="earthquake">
+          <div class="disaster-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12h2l4-10 4 18 4-12 4 4h2"></path>
+            </svg>
+          </div>
+          <h3>Earthquake Data</h3>
+          <p>Historical seismic events, magnitude readings, and impact assessments.</p>
+          <div class="download-info">
+            <span class="file-size">42 MB</span>
+            <span class="file-format">Multiple Formats</span>
+          </div>
+          <button class="download-btn">
+            <span class="btn-text">Download</span>
+            <span class="btn-icon">↓</span>
+          </button>
+        </div>
+        
+        <div class="disaster-card" data-type="flood">
+          <div class="disaster-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 16.5a4 4 0 0 1-6.8-2.5c0-1.5.5-3 2.8-5.5C6 6 8 4 8 4s2 2 4 4.5c2.3 2.5 2.8 4 2.8 5.5a4 4 0 1 1-8 2.5"></path>
+              <path d="M16 8h.01"></path>
+              <path d="M16 20a4 4 0 0 0 0-8 7 7 0 0 0-1 0"></path>
+              <path d="M9.1 20a5 5 0 0 0 9.8 0"></path>
+            </svg>
+          </div>
+          <h3>Flood Data</h3>
+          <p>Flood events, water level measurements, and affected area mapping.</p>
+          <div class="download-info">
+            <span class="file-size">38 MB</span>
+            <span class="file-format">Multiple Formats</span>
+          </div>
+          <button class="download-btn">
+            <span class="btn-text">Download</span>
+            <span class="btn-icon">↓</span>
+          </button>
+        </div>
+        
+        <div class="disaster-card" data-type="cyclone">
+          <div class="disaster-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.92 12c.29-.72.58-1.43.58-2a3 3 0 0 0-3-3c-.57 0-1.28.29-2 .58"></path>
+              <path d="M11.5 7.5c-.5-.5-1-1-1-1.5a3 3 0 0 1 3-3c.5 0 1 .5 1.5 1"></path>
+              <path d="M8.58 8.58C7.86 8.29 7.14 8 6.5 8a3 3 0 0 0-3 3c0 .64.29 1.36.58 2.08"></path>
+              <path d="M5.5 15.5C5 16 4.5 16.5 4 16.5a3 3 0 0 0-3 3c0 .5.5 1 1 1.5"></path>
+              <path d="M12 17c-.58.29-1.29.58-2 .58a3 3 0 0 1-3-3c0-.71.29-1.42.58-2"></path>
+              <path d="M16.5 16.5c.5.5 1 1 1.5 1a3 3 0 0 0 3-3c0-.5-.5-1-1-1.5"></path>
+              <path d="M16.5 11.5c1 1 2 1.5 2.5 1.5a3 3 0 0 0 3-3c0-.5-.5-1.5-1.5-2.5"></path>
+              <path d="M3.58 10C2.6 9.1 2 8.5 2 8a3 3 0 0 1 3-3c.5 0 1.1.6 2 1.58"></path>
+            </svg>
+          </div>
+          <h3>Cyclone Data</h3>
+          <p>Storm paths, wind speeds, pressure readings, and temporal evolution.</p>
+          <div class="download-info">
+            <span class="file-size">56 MB</span>
+            <span class="file-format">Multiple Formats</span>
+          </div>
+          <button class="download-btn">
+            <span class="btn-text">Download</span>
+            <span class="btn-icon">↓</span>
+          </button>
+        </div>
+        
+        <div class="disaster-card" data-type="tsunami">
+          <div class="disaster-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <h3>Tsunami Data</h3>
+          <p>Wave heights, propagation patterns, and coastal impact measurements.</p>
+          <div class="download-info">
+            <span class="file-size">29 MB</span>
+            <span class="file-format">Multiple Formats</span>
+          </div>
+          <button class="download-btn">
+            <span class="btn-text">Download</span>
+            <span class="btn-icon">↓</span>
+          </button>
+        </div>
+        
+        <div class="disaster-card" data-type="landslide">
+          <div class="disaster-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21 12-2 2-2-2-2 2-2-2-2 2-2-2-2 2-2-2"></path>
+              <path d="M7 19h14"></path>
+              <path d="M3 5h14"></path>
+              <path d="m21 12-9 9"></path>
+              <path d="M3 5 3 7"></path>
+            </svg>
+          </div>
+          <h3>Landslide Data</h3>
+          <p>Terrain displacement, soil conditions, and rainfall correlation data.</p>
+          <div class="download-info">
+            <span class="file-size">35 MB</span>
+            <span class="file-format">Multiple Formats</span>
+          </div>
+          <button class="download-btn">
+            <span class="btn-text">Download</span>
+            <span class="btn-icon">↓</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="complete-download-section">
+      <h2>Complete Database</h2>
+      <div class="complete-download-card">
+        <div class="complete-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg>
+        </div>
+        <div class="complete-info">
+          <h3>All Disaster Data</h3>
+          <p>Comprehensive collection of all disaster datasets, including additional cross-referenced materials and analysis tools.</p>
+          <div class="download-info">
+            <span class="file-size">215 MB</span>
+            <span class="file-format">ZIP (Multiple formats)</span>
+          </div>
+        </div>
+        <button class="download-btn primary">
+          <span class="btn-text">Download Complete Database</span>
+          <span class="btn-icon">↓</span>
+        </button>
+      </div>
+    </section>
+    
+    <footer>
+      <div class="update-info">
+        <p>Last Updated: <strong>March 15, 2025</strong></p>
+        <p>Available formats: CSV, JSON, GeoJSON, NetCDF, GeoTIFF</p>
+      </div>
+      <p class="copyright">© 2025 Disaster Management Portal</p>
+    </footer>
+  </div>
+  
+  <!-- Format Selection Modal -->
+  <div class="modal-overlay" id="formatModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Select Download Format</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-content">
+        <div class="format-options">
+          <div class="format-option">
+            <input type="radio" name="format" id="format-csv" value="csv" checked>
+            <label for="format-csv">
+              <div class="format-icon">CSV</div>
+              <div class="format-info">
+                <div class="format-name">CSV Format</div>
+                <div class="format-desc">Comma-separated values spreadsheet format</div>
+              </div>
+            </label>
+          </div>
+          
+          <div class="format-option">
+            <input type="radio" name="format" id="format-json" value="json">
+            <label for="format-json">
+              <div class="format-icon">JSON</div>
+              <div class="format-info">
+                <div class="format-name">JSON Format</div>
+                <div class="format-desc">JavaScript Object Notation format</div>
+              </div>
+            </label>
+          </div>
+          
+          <div class="format-option">
+            <input type="radio" name="format" id="format-geojson" value="geojson">
+            <label for="format-geojson">
+              <div class="format-icon">GEO</div>
+              <div class="format-info">
+                <div class="format-name">GeoJSON Format</div>
+                <div class="format-desc">Geographical data in JSON format</div>
+              </div>
+            </label>
+          </div>
+          
+          <div class="format-option">
+            <input type="radio" name="format" id="format-netcdf" value="netcdf">
+            <label for="format-netcdf">
+              <div class="format-icon">NC</div>
+              <div class="format-info">
+                <div class="format-name">NetCDF Format</div>
+                <div class="format-desc">Network Common Data Form for scientific data</div>
+              </div>
+            </label>
+          </div>
+          
+          <div class="format-option">
+            <input type="radio" name="format" id="format-geotiff" value="geotiff">
+            <label for="format-geotiff">
+              <div class="format-icon">TIF</div>
+              <div class="format-info">
+                <div class="format-name">GeoTIFF Format</div>
+                <div class="format-desc">Georeferenced raster imagery format</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel">Cancel</button>
+        <button class="btn-download">Download</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="database.js"></script>
+</body>
+</html>

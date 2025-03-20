@@ -188,7 +188,38 @@
             color: white;
             margin-left: 1rem;
         }
+        .home-button-container {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 100; /* Ensures button stays on top of other content */
+}
 
+/* Home button styling */
+.home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3498db;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Home icon */
+.home-icon {
+    font-size: 24px;
+}
+
+/* Hover effect */
+.home-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
         .cta-button::before {
             content: '';
             position: absolute;
@@ -201,6 +232,14 @@
             transition: transform 0.5s ease;
             z-index: -1;
         }
+        .copyright {
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+}
 
         .cta-button:hover::before {
             transform: translateX(0);
@@ -233,6 +272,11 @@
     </style>
 </head>
 <body>
+    <div class="home-button-container">
+        <a href="../Home/about.html" class="home-button">
+            <span class="home-icon">⌂</span>
+        </a>
+    </div>
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container" data-aos="fade-up">
@@ -418,5 +462,10 @@
             heroSection.style.backgroundPositionY = scrolled * 0.5 + 'px';
         });
     </script>
+    <footer>
+        <div class="copyright">
+        <p>&copy; 2025 Disaster Preparedness Portal. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="forgetpwd.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Forgot Password</h2>
+                <p>We'll help you reset your password</p>
+            </div>
+            
+            <!-- Step 1: Enter Mobile Number -->
+            <div class="step-content active" id="step1">
+                <div class="form-group">
+                    <label for="mobile">Enter Mobile Number</label>
+                    <div class="input-group">
+                        <span class="input-icon"><i class="fas fa-mobile-alt"></i></span>
+                        <input type="tel" id="mobile" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
+                    </div>
+                    <small>We'll send a verification code to this number</small>
+                </div>
+                <button id="sendOtpBtn" class="btn primary-btn">
+                    <span class="btn-text">Send OTP</span>
+                    <span class="btn-loader hidden"><i class="fas fa-circle-notch fa-spin"></i></span>
+                </button>
+                <div class="back-link">
+                    <a href="login.html"><i class="fas fa-arrow-left"></i> Back to Login</a>
+                </div>
+            </div>
+            
+            <!-- Step 2: Enter OTP -->
+            <div class="step-content" id="step2">
+                <div class="form-group">
+                    <label for="otp">Enter OTP</label>
+                    <div class="otp-container">
+                        <input type="text" maxlength="1" class="otp-input" data-index="0">
+                        <input type="text" maxlength="1" class="otp-input" data-index="1">
+                        <input type="text" maxlength="1" class="otp-input" data-index="2">
+                        <input type="text" maxlength="1" class="otp-input" data-index="3">
+                        <input type="text" maxlength="1" class="otp-input" data-index="4">
+                        <input type="text" maxlength="1" class="otp-input" data-index="5">
+                    </div>
+                    <div class="timer-container">
+                        <span id="timer">00:30</span> remaining
+                    </div>
+                    <div class="resend-container">
+                        <button id="resendOtpBtn" class="text-btn" disabled>Resend OTP</button>
+                    </div>
+                </div>
+                <button id="verifyOtpBtn" class="btn primary-btn">Verify OTP</button>
+                <button id="backToMobileBtn" class="btn secondary-btn">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            
+            <!-- Step 3: New Password -->
+            <div class="step-content" id="step3">
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <div class="input-group">
+                        <span class="input-icon"><i class="fas fa-lock"></i></span>
+                        <input type="password" id="newPassword" placeholder="Enter new password">
+                        <span class="toggle-password" id="toggleNewPassword">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-meter">
+                            <div class="strength-bar" id="strengthBar"></div>
+                        </div>
+                        <span id="strengthText">Password strength</span>
+                    </div>
+                    <ul class="password-requirements">
+                        <li id="req-length"><i class="fas fa-times-circle"></i> At least 8 characters</li>
+                        <li id="req-uppercase"><i class="fas fa-times-circle"></i> At least 1 uppercase letter</li>
+                        <li id="req-lowercase"><i class="fas fa-times-circle"></i> At least 1 lowercase letter</li>
+                        <li id="req-number"><i class="fas fa-times-circle"></i> At least 1 number</li>
+                        <li id="req-special"><i class="fas fa-times-circle"></i> At least 1 special character</li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <span class="input-icon"><i class="fas fa-lock"></i></span>
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                        <span class="toggle-password" id="toggleConfirmPassword">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <small id="passwordMatch"></small>
+                </div>
+                <button id="resetPasswordBtn" class="btn primary-btn">Reset Password</button>
+                <button id="backToOtpBtn" class="btn secondary-btn">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            
+            <!-- Step 4: Success -->
+            <div class="step-content" id="step4">
+                <div class="success-container">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Password Reset Successful!</h3>
+                    <p>Your password has been reset successfully. You can now login with your new password.</p>
+                    <button id="loginBtn" class="btn primary-btn">Login Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="forgetpwd.js"></script>
+</body>
+</html>
